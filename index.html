@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>My Uni Hub</title>
+<link rel="stylesheet" href="styles.css">
+<script src="i18n.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="top"><h1 data-i="title"></h1><div class="tools"><button id="lang" type="button"></button><button id="theme" type="button" aria-label="Theme"></button></div></div>
+  <nav>
+    <button data-v="dash" data-i="nDash" aria-pressed="true"></button>
+    <button data-v="sched" data-i="nSched"></button>
+    <button data-v="gpa" data-i="nGpa"></button>
+    <button data-v="tasks" data-i="nTasks"></button>
+    <button data-v="exams" data-i="nExams"></button>
+    <button data-v="cal" data-i="nCal"></button>
+    <button data-v="timer" data-i="nTimer"></button>
+    <button data-v="ana" data-i="nAna"></button>
+  </nav>
+</header>
+<main>
+  <section id="dash">
+    <div id="stats" class="grid"></div>
+    <div class="grid">
+      <div class="card"><h2 data-i="todayH"></h2><div id="today"></div></div>
+      <div class="card"><h2 data-i="progH"></h2><progress id="taskBar" value="0" max="1"></progress><small id="taskTxt"></small></div>
+    </div>
+    <div class="card"><h2 data-i="alertsH"></h2><div id="alerts"></div><button id="notif" data-i="notif"></button> <small id="notifMsg" role="status"></small></div>
+    <div class="card"><h2 data-i="badgesH"></h2><div id="badges"></div></div>
+    <div class="card"><h2 data-i="backupH"></h2><button id="exp" data-i="exp"></button> <label class="btnlike"><span data-i="imp"></span><input id="imp" type="file" accept="application/json" hidden></label></div>
+  </section>
+
+  <section id="sched" hidden>
+    <form id="fCourse" class="card">
+      <h2 data-i="addCourse"></h2>
+      <input name="name" data-p="pName" maxlength="60" required>
+      <input name="credits" type="number" min="1" max="6" data-p="pCr" required>
+      <select name="day" aria-label="Day"><option value="0"></option><option value="1"></option><option value="2"></option><option value="3"></option><option value="4"></option></select>
+      <label><span data-i="from"></span> <input name="start" type="time" required></label>
+      <label><span data-i="to"></span> <input name="end" type="time" required></label>
+      <input name="grade" type="number" min="0" max="100" data-p="pGrade">
+      <button class="ok" data-i="addCourse"></button>
+    </form>
+    <div id="schedule" class="grid"></div>
+  </section>
+
+  <section id="gpa" hidden>
+    <div class="grid">
+      <div class="card stat"><small data-i="gpaL"></small><strong id="gpaVal">0.00</strong></div>
+      <div class="card stat"><small data-i="hrsL"></small><strong id="hrsDone">0</strong>
+        <progress id="hrsBar" value="0" max="136"></progress>
+        <label><span data-i="reqL"></span> <input id="reqIn" type="number" min="1" max="300"></label></div>
+    </div>
+    <div class="card"><h2 data-i="gradesH"></h2><div id="grades"></div></div>
+  </section>
+
+  <section id="tasks" hidden>
+    <form id="fTask" class="card">
+      <h2 data-i="addTask"></h2>
+      <input name="title" data-p="pTitle" maxlength="80" required>
+      <input name="course" data-p="pCourse" maxlength="60">
+      <input name="due" type="date" required>
+      <button class="ok" data-i="addTask"></button>
+    </form>
+    <div id="taskList" class="card"></div>
+  </section>
+
+  <section id="exams" hidden>
+    <form id="fExam" class="card">
+      <h2 data-i="addExam"></h2>
+      <input name="course" data-p="pCourse" maxlength="60" required>
+      <input name="date" type="date" required>
+      <button class="ok" data-i="addExam"></button>
+    </form>
+    <div id="examList" class="card"></div>
+  </section>
+
+  <section id="cal" hidden>
+    <div class="card">
+      <div class="bar"><button id="prev" data-i="prev"></button><h2 id="calTitle"></h2><button id="next" data-i="next"></button></div>
+      <div id="calGrid" class="cal"></div>
+    </div>
+  </section>
+
+  <section id="timer" hidden>
+    <div class="card stat">
+      <div class="seg"><button id="mFocus" type="button" data-i="tFocus"></button><button id="mRest" type="button" data-i="tRest"></button></div>
+      <strong id="tTime">25:00</strong>
+      <progress id="tBar" value="0" max="1"></progress>
+      <div class="acts"><button id="tGo" type="button" class="ok"></button><button id="tReset" type="button" data-i="tReset"></button></div>
+      <label><span data-i="tFocusMin"></span> <input id="lenF" type="number" min="1" max="180" value="25"></label>
+      <label><span data-i="tRestMin"></span> <input id="lenR" type="number" min="1" max="180" value="5"></label>
+    </div>
+    <div class="card"><h2 data-i="tStats"></h2><p id="tSum"></p></div>
+  </section>
+
+  <section id="ana" hidden><div id="analysis" class="grid"></div></section>
+</main>
+</body>
+</html>
