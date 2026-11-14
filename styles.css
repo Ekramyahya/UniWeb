@@ -46,4 +46,4 @@ progress{width:100%;height:.8rem;accent-color:var(--p)}
 [data-theme=dark] .seg button[aria-pressed=true]{color:#042f2e}
 #tTime{font-size:4.5rem;font-variant-numeric:tabular-nums}
 #notifMsg{margin-inline-start:.5rem}
-.top h1 button{background:none;border:0;color:inherit;font:inherit;padding:0;cursor:pointer}
+.top h1 button{background:none;border:0;color:green;font:inherit;padding:0;cursor:pointer}
