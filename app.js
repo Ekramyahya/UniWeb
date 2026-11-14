@@ -161,6 +161,7 @@ document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
   document.querySelectorAll('main>section').forEach(s => s.hidden = s.id !== b.dataset.v);
   document.querySelectorAll('nav button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
 });
+$('#home').onclick = () => { $('nav button[data-v=dash]').click(); scrollTo(0, 0) };
 $('#reqIn').onchange = e => { const v = +e.target.value; if (v >= 1 && v <= 300) { S.required = v; save(); render() } };
 $('#prev').onclick = () => { cal = new Date(cal.getFullYear(), cal.getMonth() - 1, 1); rCal() };
 $('#next').onclick = () => { cal = new Date(cal.getFullYear(), cal.getMonth() + 1, 1); rCal() };
